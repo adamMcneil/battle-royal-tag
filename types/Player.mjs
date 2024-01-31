@@ -1,6 +1,6 @@
 class Player {
-  name: string;
-  isAlive: boolean;
+  name;
+  isAlive;
     constructor(name) {
       this.name = name;
       this.isAlive = true;
