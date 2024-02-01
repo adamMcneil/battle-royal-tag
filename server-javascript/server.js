@@ -1,8 +1,9 @@
 const express = require("express");
 const http = require("http");
+const cors = require("cors");
 const WebSocket = require("ws");
-const Game = require('../types/Game.js')
-const Player = require('../types/Player.js')
+const Game = require("../types/Game.js");
+const Player = require("../types/Player.js");
 
 const app = express();
 const server = http.createServer(app);
@@ -24,6 +25,7 @@ wss.on("connection", (ws) => {
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/broadcast", (req, res) => {
   const { message } = req.body;
@@ -40,8 +42,8 @@ app.post("/broadcast", (req, res) => {
 app.post("/join", (req, res) => {
   console.log(req.body.player);
   game.addPlayer(new Player(req.body));
-  console.log(JSON.stringify(game))
-  console.log(clients)
+  console.log(JSON.stringify(game));
+  console.log(clients);
   clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify(game));
@@ -49,6 +51,10 @@ app.post("/join", (req, res) => {
   });
 
   res.status(200).send("joined game");
+});
+
+app.get("/game", (req, res) => {
+  res.status(200).send(JSON.stringify(game));
 });
 
 app.post("/kill", (req, res) => {

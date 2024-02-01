@@ -26,6 +26,10 @@ class PlayerList {
   kill(killer) {
     this.getTarget(killer).kill();
   }
+
+  shuffle() {
+    this.player_list.shuffle();
+  }
 }
 
 module.exports = PlayerList
