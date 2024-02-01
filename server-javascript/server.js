@@ -1,8 +1,8 @@
 const express = require("express");
 const http = require("http");
 const WebSocket = require("ws");
-const Game = require('./types/Game.js')
-const Player = require('./types/Player.js')
+const Game = require('../types/Game.js')
+const Player = require('../types/Player.js')
 
 const app = express();
 const server = http.createServer(app);
