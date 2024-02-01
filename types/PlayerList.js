@@ -1,4 +1,5 @@
-import Player from "./Player.mjs";
+// import Player from "./Player.js";
+const Player = require('./Player.js')
 
 class PlayerList {
   player_list = [];
@@ -27,4 +28,5 @@ class PlayerList {
   }
 }
 
-export default PlayerList;
+module.exports = PlayerList
+// export default PlayerList;

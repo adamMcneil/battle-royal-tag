@@ -1,14 +1,14 @@
 const express = require("express");
 const http = require("http");
 const WebSocket = require("ws");
-const Game = require("./types/Game.mjs")
+const Game = require('./types/Game.js')
+const Player = require('./types/Player.js')
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 const clients = new Set();
-// import Game from "./types/Game.mjs";
 const game = new Game();
 
 wss.on("connection", (ws) => {
@@ -38,9 +38,10 @@ app.post("/broadcast", (req, res) => {
 });
 
 app.post("/join", (req, res) => {
-  console.log(req.body);
+  console.log(req.body.player);
   game.addPlayer(new Player(req.body));
-
+  console.log(JSON.stringify(game))
+  console.log(clients)
   clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify(game));
