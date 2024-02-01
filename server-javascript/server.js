@@ -40,10 +40,8 @@ app.post("/broadcast", (req, res) => {
 });
 
 app.post("/join", (req, res) => {
-  console.log(req.body.player);
-  game.addPlayer(new Player(req.body));
-  console.log(JSON.stringify(game));
-  console.log(clients);
+  game.addPlayer(new Player(req.body.player));
+  
   clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify(game));

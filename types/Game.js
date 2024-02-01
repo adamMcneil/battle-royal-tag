@@ -1,7 +1,7 @@
 // import PlayerList from "./PlayerList.js";
 const PlayerList = require('./PlayerList.js')
 
-class Game {
+ class Game {
   player_list = new PlayerList();
   total_players = 0;
   players_left = 0;
@@ -26,5 +26,4 @@ class Game {
   }
 }
 
-module.exports = Game
-// export default Game;
+module.exports = Game;
