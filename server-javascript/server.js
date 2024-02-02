@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 const clients = new Set();
-const game = new Game();
+let game = new Game();
 
 wss.on("connection", (ws) => {
   clients.add(ws);
@@ -53,6 +53,28 @@ app.post("/join", (req, res) => {
 
 app.get("/game", (req, res) => {
   res.status(200).send(JSON.stringify(game));
+});
+
+app.get("/shuffle", (req, res) => {
+  game.shuffle();
+  
+  clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify(game));
+    }
+  });
+  res.status(200).send("Shuffled");
+});
+
+app.get("/reset", (req, res) => {
+  game = new Game();
+  
+  clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify(game));
+    }
+  });
+  res.status(200).send("reset");
 });
 
 app.post("/kill", (req, res) => {

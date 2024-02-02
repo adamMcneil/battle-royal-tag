@@ -21,6 +21,22 @@ export async function getGame() {
 	return response;
 }
 
+export async function getShuffle() {
+	const response: Response = await fetch(getBaseServerPath() + 'shuffle', {
+		method: 'GET',
+		headers: { 'Content-Type': 'application/json' }
+	});
+	return response;
+}
+
+export async function getReset() {
+	const response: Response = await fetch(getBaseServerPath() + 'reset', {
+		method: 'GET',
+		headers: { 'Content-Type': 'application/json' }
+	});
+	return response;
+}
+
 export async function postKill(name: string) {
 	const request = await fetch(localStorage.getItem('base_server_path') + 'kill', {
 		method: 'POST',

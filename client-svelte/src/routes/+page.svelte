@@ -4,7 +4,9 @@ import InputField from '$lib/InputField.svelte';
 import {
     getGame,
     postJoinGame,
-    postKill
+    postKill, 
+    getShuffle,
+    getReset
 } from '$lib/request';
 import {
     onMount
@@ -102,6 +104,23 @@ function onKill() {
     }
 }
 
+function onShuffle() {
+    const response = getShuffle();
+    response.then((response) => {
+        if (response.ok) {
+            kills = kills + 1;
+        } else {}
+    });
+}
+
+function onReset() {
+    const response = getReset();
+    response.then((response) => {
+        if (response.ok) {
+        } else {}
+    });
+}
+
 function onHit() {
     const response = getGame();
     response.then((response) => {
@@ -145,6 +164,12 @@ function onHit() {
     {/if}
     <div>
         <Button text="kill" onClick={onKill} />
+    </div>
+    <!-- <div>
+        <Button text="shuffle" onClick={onShuffle} />
+    </div> -->
+    <div>
+        <Button text="reset" onClick={onReset} />
     </div>
     <div>
         <Button

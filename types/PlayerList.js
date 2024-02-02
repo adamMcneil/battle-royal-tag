@@ -28,7 +28,7 @@ class PlayerList {
   }
 
   shuffle() {
-    this.player_list.shuffle();
+    this.player_list.shuffle(); // this is not actually a thing
   }
 
   contains(name) {
