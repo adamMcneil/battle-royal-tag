@@ -1,5 +1,5 @@
 // import Player from "./Player.js";
-const Player = require('./Player.js')
+const Player = require("./Player.js");
 
 class PlayerList {
   player_list = [];
@@ -30,7 +30,16 @@ class PlayerList {
   shuffle() {
     this.player_list.shuffle();
   }
+
+  contains(name) {
+    for (let i = 0; i < this.player_list.length; i++) {
+      if (this.player_list[i].name == name) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
-module.exports = PlayerList
+module.exports = PlayerList;
 // export default PlayerList;
