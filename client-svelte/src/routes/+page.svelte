@@ -20,10 +20,10 @@
    */
   let ws;
 
-  let production_url = "https://weight-inquiries.onrender.com/api/v1/game/";
+  let production_url = "https://battle-royal-tag.onrender.com";
   let test_url = "http://localhost:3000/";
 
-  let ws_production_url = "https://weight-inquiries.onrender.com/api/v1/game/";
+  let ws_production_url = "ws://battle-royal-tag.onrender.com";
   let ws_test_url = "ws://localhost:3000";
 
   function connectWebSocket() {
