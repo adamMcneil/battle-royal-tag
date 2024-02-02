@@ -1,7 +1,7 @@
 <script>
   import Button from "$lib/Button.svelte";
   import InputField from "$lib/InputField.svelte";
-  import { postJoinGame, postKill } from "$lib/request";
+  import { getGame, postJoinGame, postKill } from "$lib/request";
   import { onMount } from "svelte";
   import { Game } from "../lib/Game.js";
 
@@ -91,6 +91,16 @@
       }
     });
   }
+
+  function onHit() {
+    const response = getGame();
+    response.then((response) => {
+      if (response.ok) {
+        console.log(response)
+      } else {
+      }
+    });
+  }
 </script>
 
 <main>
@@ -117,6 +127,9 @@
       <Button text="leave" onClick={() => {
         setGameState("join")
       }}  />
+  </div>
+  <div>
+    <Button text='hit' onClick={onHit} />
   </div>
 </main>
 
