@@ -20,7 +20,7 @@
    */
   let ws;
 
-  let production_url = "https://battle-royal-tag.onrender.com";
+  let production_url = "https://battle-royal-tag.onrender.com/";
   let test_url = "http://localhost:3000/";
 
   let ws_production_url = "ws://battle-royal-tag.onrender.com";
