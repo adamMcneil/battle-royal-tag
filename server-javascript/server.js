@@ -56,8 +56,7 @@ app.get("/game", (req, res) => {
 });
 
 app.post("/kill", (req, res) => {
-  console.log(req.body);
-  game.player_list.kill(req.body);
+  game.kill(req.body);
 
   clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
