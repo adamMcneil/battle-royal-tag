@@ -53,7 +53,6 @@
   }
 
   onMount(() => {
-    connectWebSocket();
     if (!localStorage.getItem("game_state")) {
       setGameState("join");
     } else {
@@ -66,6 +65,7 @@
       localStorage.setItem("base_server_path", production_url);
       localStorage.setItem("ws_base_server_path", ws_production_url);
     }
+    connectWebSocket();
   });
 
   function onClick() {
